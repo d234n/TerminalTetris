@@ -120,7 +120,7 @@ def draw(stdscr, board, shape, x, y, score, best_score, block_symbol, colored_mo
     stdscr.addstr(0, 2, "ASCII TETRIS")
     stdscr.addstr(1, 2, f"Score: {score} | Best: {best_score} | color: {'ON' if colored_mode else 'OFF'}")
 
-    stdscr.addstr(2, 2, "." + "__" * (width + 2) + ".")
+    stdscr.addstr(2, 2, "+" + "." + "__" * (width + 1) + "." + "+")
 
     for row in range(height):
         stdscr.addstr(3 + row, 2, "|#|")
@@ -144,21 +144,48 @@ def draw(stdscr, board, shape, x, y, score, best_score, block_symbol, colored_mo
     stdscr.addstr(3 + height, 2, "|" + "%#" * (width + 2) + "|")
     stdscr.addstr(4 + height, 2, "`" + "¯¯" * (width + 2) + "´")
     stdscr.addstr(6 + height, 2, "Left/Right: move | Up: rotate")
-    stdscr.addstr(7 + height, 2, "Down: faster | Space: drop | Q: quit")
+    stdscr.addstr(7 + height, 2, "Down: faster | Space: drop | ESC: pause")
 
     stdscr.refresh()
 
 def pause_game(stdscr):
     stdscr.erase()
-    stdscr.addstr(2, 2, "PAUSED")
-    stdscr.addstr(4, 2, "Tekan ESC untuk melanjutkan.")
+    stdscr.addstr(6, 12, "PAUSED")
+    stdscr.addstr(7, 7, "--" * (width - 2) + "-")
+    stdscr.addstr(8, 6, "[ESC] Continue")
+    stdscr.addstr(9, 7, "--" * (width - 2) + "-")
+    stdscr.addstr(10, 5, " [C] Change color")
+    stdscr.addstr(11, 7, "--" * (width - 2) + "-")
+    stdscr.addstr(12, 5, " [Q] Quit")
+    stdscr.addstr(13, 7, "--" * (width - 2) + "-")
+    
+
+    stdscr.addstr(2, 2, "." + "__" * (width + 2) + ".")
+
+    for row in range(height):
+        stdscr.addstr(3 + row, 2, "||")
+
+    for row in range(height):
+        stdscr.addstr(3 + row, 6 + width * 2, "||")
+
+        stdscr.addstr(3 + height, 2, "|" + "+" + "==" * (width + 1) + "+" + "|")
+        stdscr.addstr(4 + height, 2, "`" + "¯¯" * (width + 2) + "´") 
+
     stdscr.refresh()
 
     stdscr.nodelay(False)
-    while stdscr.getch() != 27:  # ESC key
-        pass
-    stdscr.nodelay(True)
+    while True:
+        key = stdscr.getch()
 
+        if key == 27: # ESC: lanjutkan game
+            break
+
+        if key in (ord("q"), ord("Q")): # Q: keluar
+            stdscr.nodelay(True)
+            return True
+   
+    stdscr.nodelay(True)
+    return False
 
 def main(stdscr):
     curses.curs_set(0)
@@ -194,7 +221,11 @@ def main(stdscr):
         key = stdscr.getch()
 
         if key == 27:  # ESC key
-            pause_game(stdscr)
+            should_quit = pause_game(stdscr)
+
+            if should_quit:
+                break
+
             last_fall = time.monotonic()  # Reset last_fall after pause
             continue
 
@@ -252,10 +283,27 @@ def main(stdscr):
 
     stdscr.nodelay(False)
     stdscr.erase()
-    stdscr.addstr(2, 2, "GAME OVER!")
-    stdscr.addstr(4, 2, f"Final score: {score}")
-    stdscr.addstr(5, 2, f"Best score: {best_score}")
-    stdscr.addstr(7, 2, "Tekan tombol apa saja untuk keluar.")
+    stdscr.addstr(6, 10, "GAME OVER!")
+    stdscr.addstr(7, 7, "--" * (width - 2) + "-")
+    stdscr.addstr(8, 6, f"Final score: {score}")
+    stdscr.addstr(9, 7, "--" * (width - 2) + "-")
+    stdscr.addstr(10, 6, f"Best score: {best_score}")
+    stdscr.addstr(11, 7, "--" * (width - 2) + "-")
+    stdscr.addstr(12, 6, "Press any button")
+    stdscr.addstr(13, 6, "to quit.")
+    stdscr.addstr(14, 7, "--" * (width - 2) + "-")
+
+    stdscr.addstr(2, 2, "." + "__" * (width + 2) + ".")
+    
+    for row in range(height):
+            stdscr.addstr(3 + row, 2, "||")
+    
+    for row in range(height):
+            stdscr.addstr(3 + row, 6 + width * 2, "||")
+    
+            stdscr.addstr(3 + height, 2, "|" + "+" + "==" * (width + 1) + "+" + "|")
+            stdscr.addstr(4 + height, 2, "`" + "¯¯" * (width + 2) + "´")
+
     stdscr.refresh()
     stdscr.getch()
 
