@@ -158,7 +158,6 @@ def pause_game(stdscr):
     stdscr.addstr(11, 7, "--" * (width - 2) + "-")
     stdscr.addstr(12, 5, " [Q] Quit")
     stdscr.addstr(13, 7, "--" * (width - 2) + "-")
-    
 
     stdscr.addstr(2, 2, "." + "__" * (width + 2) + ".")
 
