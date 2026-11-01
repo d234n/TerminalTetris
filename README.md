@@ -20,5 +20,10 @@ Buka terminal, masuk ke folder project, lalu jalankan:
 python -m pip install windows-curses
 ```
 ```powershell
-python tetris.py
+python start_game.py
+```
+
+### Linux dan macOS
+```powershell
+python3 tetris.py
 ```
