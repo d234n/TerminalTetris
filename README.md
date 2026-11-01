@@ -34,3 +34,14 @@ Jika perintah `python` tidak tersedia, gunakan `python3`.
 Balok akan jatuh secara otomatis. Susun balok agar membentuk satu baris penuh untuk menghapusnya.
 Setiap baris yang berhasil dihapus memberikan 100 poin.
 Skor tertinggi disimpan otomatis dalam file `high_score.txt`.
+
+| Tombol | Fungsi |
+| --- | --- |
+| Panah kiri | Pindah ke kiri |
+| Panah kanan | Pindah ke kanan |
+| Panah atas | Memutar balok |
+| Panah bawah | Menurunkan balok lebih cepat |
+| Spasi | Menjatuhkan balok langsung ke bawah |
+| C | Mengaktifkan dan menonaktifkan warna |
+| ESC | Membuka menu pause |
+| Q | Keluar dari permainan |
