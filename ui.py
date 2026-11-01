@@ -8,6 +8,7 @@ import curses
 
 from config import block_symbols, height, width
 
+#-----------------------------------------------------------------------------
 
 def setup_colors():
     if not curses.has_colors():
@@ -47,8 +48,10 @@ def setup_colors():
 
     return color_pairs
 
+#-----------------------------------------------------------------------------
 
 def draw(stdscr, board, shape, x, y, score, best_score, block_symbol, colored_mode, color_pairs):
+
     stdscr.erase()
 
     stdscr.addstr(0, 2, "ASCII TETRIS")
@@ -81,9 +84,12 @@ def draw(stdscr, board, shape, x, y, score, best_score, block_symbol, colored_mo
 
     stdscr.refresh()
 
+#-----------------------------------------------------------------------------
 
 def draw_pause(stdscr):
+
     stdscr.erase()
+
     stdscr.addstr(6, 12, "PAUSED")
     stdscr.addstr(7, 7, "--" * (width - 2) + "-")
     stdscr.addstr(8, 6, "[ESC] Continue")
@@ -103,13 +109,17 @@ def draw_pause(stdscr):
 
     stdscr.addstr(3 + height, 2, "|" + "+" + "==" * (width + 1) + "+" + "|")
     stdscr.addstr(4 + height, 2, "`" + "¯¯" * (width + 2) + "´")
+
     stdscr.refresh()
 
+#-----------------------------------------------------------------------------
 
 def pause_game(stdscr):
+
     draw_pause(stdscr)
 
     stdscr.nodelay(False)
+    
     while True:
         key = stdscr.getch()
 
@@ -123,17 +133,24 @@ def pause_game(stdscr):
     stdscr.nodelay(True)
     return False
 
+#-----------------------------------------------------------------------------
 
 def draw_terminal_size(stdscr, rows, cols):
+
     stdscr.erase()
+
     stdscr.addstr(0, 0, f"Terminal terbaca: {rows} baris x {cols} kolom")
     stdscr.addstr(1, 0, "Kirim angka ukuran terminal ini.")
+
     stdscr.refresh()
 
+#-----------------------------------------------------------------------------
 
 def draw_game_over(stdscr, score, best_score):
+
     stdscr.nodelay(False)
     stdscr.erase()
+
     stdscr.addstr(6, 10, "GAME OVER!")
     stdscr.addstr(7, 7, "--" * (width - 2) + "-")
     stdscr.addstr(8, 6, f"Final score: {score}")
@@ -157,3 +174,5 @@ def draw_game_over(stdscr, score, best_score):
 
     stdscr.refresh()
     stdscr.getch()
+
+#-----------------------------------------------------------------------------

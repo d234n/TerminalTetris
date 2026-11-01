@@ -6,6 +6,7 @@ Rotasi, gerakan, penghapusan baris, dan high score
 
 from config import HIGH_SCORE_FILE, height, width
 
+#-----------------------------------------------------------------------------
 
 def load_high_score():
     try:
@@ -15,6 +16,7 @@ def load_high_score():
     except (FileNotFoundError, ValueError):
         return 0
 
+#-----------------------------------------------------------------------------
 
 def save_high_score(score):
     try:
@@ -23,6 +25,7 @@ def save_high_score(score):
     except OSError:
         pass
 
+#-----------------------------------------------------------------------------
 
 def update_high_score(current_score, best_score):
     if current_score > best_score:
@@ -30,10 +33,12 @@ def update_high_score(current_score, best_score):
         save_high_score(best_score)
     return best_score
 
+#-----------------------------------------------------------------------------
 
 def rotate(shape):
     return [(3 - y, x) for x, y in shape]
 
+#-----------------------------------------------------------------------------
 
 def can_move(board, shape, x, y):
     for dx, dy in shape:
@@ -48,6 +53,7 @@ def can_move(board, shape, x, y):
 
     return True
 
+#-----------------------------------------------------------------------------
 
 def clear_lines(board):
     remaining = [row for row in board if not all(row)]
@@ -58,3 +64,5 @@ def clear_lines(board):
 
     board[:] = remaining
     return cleared
+
+#-----------------------------------------------------------------------------
