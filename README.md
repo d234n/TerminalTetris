@@ -27,3 +27,10 @@ python start_game.py
 ```powershell
 python3 tetris.py
 ```
+Jika perintah `python` tidak tersedia, gunakan `python3`.
+
+## Cara Bermain
+
+Balok akan jatuh secara otomatis. Susun balok agar membentuk satu baris penuh untuk menghapusnya.
+Setiap baris yang berhasil dihapus memberikan 100 poin.
+Skor tertinggi disimpan otomatis dalam file `high_score.txt`.
