@@ -16,15 +16,15 @@ serta menyimpan skor tertinggi secara lokal.
 
 Buka terminal, masuk ke folder project, lalu jalankan:
 
-```powershell
+```
 python -m pip install windows-curses
 ```
-```powershell
+```
 python start_game.py
 ```
 
 ### Linux dan macOS
-```powershell
+```
 python3 tetris.py
 ```
 Jika perintah `python` tidak tersedia, gunakan `python3`.
@@ -51,3 +51,15 @@ Skor tertinggi disimpan otomatis dalam file `high_score.txt`.
 ```
 python -m unittest discover -s tests -v
 ```
+
+## Struktur Project
+
+terminal-tetris/
+├── tetris.py       # Entry point aplikasi
+├── game.py         # Loop utama permainan
+├── game_logic.py   # Aturan dan perhitungan permainan
+├── ui.py           # Tampilan dan interaksi curses
+├── config.py       # Konfigurasi papan dan bentuk blok
+├── high_score.txt  # Penyimpanan skor tertinggi
+└── tests/
+    └── test_game_logic.py
