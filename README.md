@@ -18,4 +18,7 @@ Buka terminal, masuk ke folder project, lalu jalankan:
 
 ```powershell
 python -m pip install windows-curses
+```
+```powershell
 python tetris.py
+```
