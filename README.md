@@ -54,7 +54,7 @@ python -m unittest discover -s tests -v
 
 ## Struktur Project
 
-`
+```
 terminal-tetris/
 ├── tetris.py       # Entry point aplikasi
 ├── game.py         # Loop utama permainan
@@ -64,7 +64,7 @@ terminal-tetris/
 ├── high_score.txt  # Penyimpanan skor tertinggi
 └── tests/
     └── test_game_logic.py
-`
+```
 
 ## Troubleshooting
 
