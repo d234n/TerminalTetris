@@ -56,12 +56,12 @@ python -m unittest discover -s tests -v
 
 ```
 terminal-tetris/
-├── tetris.py       # Entry point aplikasi
-├── game.py         # Loop utama permainan
-├── game_logic.py   # Aturan dan perhitungan permainan
-├── ui.py           # Tampilan dan interaksi curses
-├── config.py       # Konfigurasi papan dan bentuk blok
-├── high_score.txt  # Penyimpanan skor tertinggi
+├── start_game.py    # Entry point permainan
+├── game.py          # Loop utama permainan
+├── game_logic.py    # Aturan dan perhitungan permainan
+├── ui.py            # Tampilan dan interaksi curses
+├── config.py        # Konfigurasi papan dan bentuk blok
+├── high_score.txt   # Penyimpanan skor tertinggi
 └── tests/
     └── test_game_logic.py
 ```
