@@ -45,3 +45,9 @@ Skor tertinggi disimpan otomatis dalam file `high_score.txt`.
 | C | Mengaktifkan dan menonaktifkan warna |
 | ESC | Membuka menu pause |
 | Q | Keluar dari permainan |
+
+## Menjalankan Pengujian
+
+```
+python -m unittest discover -s tests -v
+```
